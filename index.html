@@ -20,6 +20,7 @@
             background-repeat: repeat; /* Много изображений по всей странице */
             position: relative;
             overflow: hidden;
+            transition: background-color 0.5s; /* Плавный переход цвета фона */
         }
         #question {
             font-size: 24px;
@@ -99,6 +100,10 @@
             document.getElementById('yes').style.display = 'none';
             document.getElementById('no').style.display = 'none';
             document.getElementById('container').style.display = 'flex'; // Показать контейнер
+
+            // Убрать фон и установить новый цвет
+            document.body.style.backgroundImage = 'none'; // Убрать фон с сердечками
+            document.body.style.backgroundColor = '#E6E6FA'; // Нежно-фиолетовый цвет
 
             // Показать тексты по очереди
             setTimeout(() => showText('text1'), 0); // Показываем первый текст сразу
