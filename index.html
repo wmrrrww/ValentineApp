@@ -10,18 +10,67 @@
         body {
             font-family: cursive; /* Установка шрифта Cursive для всего текста */
         }
+        #container {
+            display: flex;
+            flex-wrap: wrap;
+            height: 100vh;
+            position: relative;
+            opacity: 0; /* Скрыто до появления */
+        }
+        .part {
+            width: 33.33%; /* Ширина каждой части */
+            height: 50%; /* Высота каждой части */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+        #part6 {
+            width: 100%; /* Ширина шестой части */
+            height: 100%; /* Высота шестой части */
+            display: none; /* Скрыто до заполнения */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px; /* Увеличенный размер текста */
+        }
+        img {
+            margin-top: 20px; /* Отступ для изображения */
+            width: 100px; /* Ширина изображения */
+        }
     </style>
 </head>
 <body>
     <div id="question">Ты будешь моей валентинкой?</div>
     <button class="button" id="yes">Да</button>
     <button class="button" id="no">Нет</button>
+    <div id="container">
+        <div class="part" id="part1"></div>
+        <div class="part" id="part2"></div>
+        <div class="part" id="part3"></div>
+        <div class="part" id="part4"></div>
+        <div class="part" id="part5"></div>
+        <div class="part" id="part6">
+            <div id="finalText">Я бы сделала целое приложение для тебя, но у меня нет...</div>
+            <img src="ring.png" alt="Кольцо">
+        </div>
+    </div>
 
     <script>
         document.getElementById('yes').onclick = function() {
             document.getElementById('question').innerText = 'Урааааа, спасибо!';
             document.getElementById('yes').style.display = 'none';
             document.getElementById('no').style.display = 'none';
+            setTimeout(() => {
+                document.getElementById('container').style.opacity = 1; // Показать контейнер
+                document.body.style.backgroundImage = 'none'; // Убрать фон
+                typeText('Я буду верить в то, что это наш не последний раз, когда мы будем отмечать этот праздник. Их будет несчитанное количество', 'part1', 0);
+                typeText('Каждый раз, как я смотрю в твои глаза, я вижу это, ты - всё, что мне нужно', 'part2', 0);
+                typeText('Я нашла тебя, не глядя, и люблю тебя, не пытаясь', 'part3', 0);
+                typeText('Юридически - мы не вместе. Биологически - нас объединяет лишь вид. Но морально и психологически - люблю до безумия', 'part4', 0);
+                typeText('С этой маленькой открыткой я дарю тебе улыбку и немного нежных слов... ну и свою любовь <3', 'part5', 0);
+            }, 5000); // Ждать 5 секунд
         };
 
         document.getElementById('no').onclick = function() {
@@ -33,6 +82,16 @@
             button.style.left = Math.random() * (window.innerWidth - 100) + 'px';
             button.style.top = Math.random() * (window.innerHeight - 50) + 'px';
             setTimeout(() => moveButton(button), 1000);
+        }
+
+        function typeText(text, partId, index) {
+            if (index < text.length) {
+                document.getElementById(partId).innerText += text.charAt(index);
+                setTimeout(() => typeText(text, partId, index + 1), 50); // Печать каждой буквы с задержкой
+            } else if (partId === 'part5') {
+                document.getElementById('part6').style.display = 'flex'; // Показать шестую часть
+                typeText('Я бы сделала целое приложение для тебя, но у меня нет...', 'finalText', 0);
+            }
         }
     </script>
 </body>
