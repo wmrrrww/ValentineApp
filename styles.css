@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0e1ff; /* Светлый фон */
+    position: relative;
+    overflow: hidden;
+    font-family: 'Segoe Script', cursive; /* Установка шрифта Segoe Script */
+    background-image: url('heart.png'); /* Фоновое изображение сердечка */
+    background-repeat: repeat; /* Повторение фонового изображения */
+    background-size: 60px 60px; /* Размер сердечка */
+}
+
+#question {
+    font-size: 24px;
+    text-align: center;
+    z-index: 1;
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1;
+    font-size: 16px;
+    font-weight: bold; /* Жирный шрифт */
+    font-family: 'Segoe Script', cursive; /* Шрифт для кнопок */
+}
+
+#yes {
+    background-color: #90ee90; /* Нежно-зеленый цвет */
+    color: white;
+}
+
+#no {
+    background-color: black; /* Черный цвет */
+    color: white;
+}
+
+.heart {
+    position: absolute;
+    width: 40px; /* Увеличенный размер сердечка */
+    height: 40px;
+    background-color: rgba(255, 105, 180, 0.5); /* Полупрозрачный розовый цвет */
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    animation: float 3s infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
