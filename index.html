@@ -6,7 +6,7 @@
     <title>Валентинка</title>
     <link rel="apple-touch-icon" href="icon.png"> <!-- Иконка для главного экрана -->
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet"> <!-- Подключение шрифта Comfortaa -->
-    <link rel="stylesheet" href="styles.css"> <!-- Подключение CSS -->
+    <link rel="stylesheet" href="styles.css"> <!-- Подключение CSS файла -->
     <style>
         body {
             font-family: 'Comfortaa', cursive; /* Установка шрифта Comfortaa для всего текста */
@@ -29,7 +29,6 @@
             text-shadow: 0 0 5px white; /* Белая обводка текста */
         }
         .button {
-            font-family: 'Comfortaa', cursive; /* Установка шрифта Comfortaa для кнопок */
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
@@ -38,6 +37,7 @@
             font-size: 16px;
             font-weight: bold; /* Жирный шрифт */
             color: white; /* Цвет текста кнопок */
+            font-family: 'Comfortaa', cursive; /* Установка шрифта Comfortaa для кнопок */
         }
         #yes {
             background-color: #90ee90; /* Нежно-зеленый цвет */
@@ -50,59 +50,32 @@
             position: absolute;
             width: 100%;
             height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column; /* Вертикальное выравнивание текстов */
+            align-items: center; /* Центрирование текстов */
+            justify-content: center; /* Центрирование текстов */
         }
         .text {
             display: none; /* Скрыто до появления */
-            text-align: justify; /* Выравнивание текста по ширине */
-            margin: 20px; /* Отступ между текстами */
+            text-align: center; /* Центрирование текста */
+            margin: 10px; /* Отступ между текстами */
             opacity: 0; /* Скрыто до появления */
             transition: opacity 0.5s; /* Плавное появление текста */
-            word-wrap: break-word; /* Перенос слов */
             max-width: 90%; /* Максимальная ширина текста */
             line-height: 1.5; /* Высота строки для удобства чтения */
         }
-        #text1 {
-            position: absolute;
-            top: 10%; /* Положение текста */
-            left: 5%;
-        }
-        #text2 {
-            position: absolute;
-            top: 30%; /* Положение текста */
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        #text3 {
-            position: absolute;
-            top: 50%; /* Положение текста */
-            right: 5%;
-        }
-        #text4 {
-            position: absolute;
-            bottom: 30%; /* Положение текста */
-            left: 5%;
-        }
-        #text5 {
-            position: absolute;
-            bottom: 10%; /* Положение текста */
-            right: 5%;
-        }
         #text6 {
-            position: absolute;
-            top: 70%; /* Положение текста */
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 32px; /* Увеличенный размер текста */
+            display: none; /* Скрыто до появления */
             text-align: center; /* Центрирование текста */
+            font-size: 32px; /* Увеличенный размер текста */
+            margin-top: 20px; /* Отступ сверху */
         }
         img {
             display: none; /* Скрыто до появления */
             margin-top: 20px; /* Отступ для изображения */
             width: 100px; /* Ширина изображения */
-            position: absolute;
-            top: 80%; /* Положение изображения */
-            left: 50%;
-            transform: translateX(-50%); /* Центрирование изображения */
         }
     </style>
 </head>
@@ -125,27 +98,42 @@
             document.getElementById('question').style.display = 'none'; // Скрыть вопрос
             document.getElementById('yes').style.display = 'none';
             document.getElementById('no').style.display = 'none';
-            document.getElementById('container').style.display = 'block'; // Показать контейнер
+            document.getElementById('container').style.display = 'flex'; // Показать контейнер
 
             // Показать тексты по очереди
-            setTimeout(() => {
-                document.body.style.backgroundImage = 'none'; // Убрать фон
-                showText('text1'); // Показываем первый текст
-            }, 0); // Показываем первый текст сразу
+            setTimeout(() => showText('text1'), 0); // Показываем первый текст сразу
             setTimeout(() => showText('text2'), 3000); // Второй текст через 3 секунды
             setTimeout(() => showText('text3'), 6000); // Третий текст через 6 секунд
             setTimeout(() => showText('text4'), 9000); // Четвертый текст через 9 секунд
             setTimeout(() => showText('text5'), 12000); // Пятый текст через 12 секунд
-            setTimeout(() => {
-                showText('text6'); // Шестой текст
-                document.getElementById('ringImage').style.display = 'block'; // Показать изображение
-            }, 15000); // Через 15 секунд
         };
 
         function showText(textId) {
             const textElement = document.getElementById(textId);
             textElement.style.display = 'block'; // Показать текст
             textElement.style.opacity = 1; // Сделать текст видимым
+        }
+
+        // Обработка двойного нажатия для скрытия текстов и показа шестого текста
+        let clickCount = 0;
+        document.getElementById('container').addEventListener('click', function() {
+            clickCount++;
+            if (clickCount === 2) {
+                hideTexts(); // Скрыть тексты
+                showText('text6'); // Показать шестой текст
+                document.getElementById('ringImage').style.display = 'block'; // Показать изображение
+                clickCount = 0; // Сбросить счетчик
+            }
+        });
+
+        function hideTexts() {
+            for (let i = 1; i <= 5; i++) {
+                const textElement = document.getElementById('text' + i);
+                textElement.style.opacity = 0; // Сделать текст невидимым
+                setTimeout(() => {
+                    textElement.style.display = 'none'; // Скрыть текст
+                }, 500); // Задержка для плавного исчезновения
+            }
         }
 
         document.getElementById('no').onclick = function() {
