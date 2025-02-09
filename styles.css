@@ -7,7 +7,7 @@ body {
     background-color: #f0e1ff; /* Светлый фон */
     position: relative;
     overflow: hidden;
-    font-family: 'Segoe Script', cursive; /* Установка шрифта Segoe Script */
+    font-family: cursive; /* Установка шрифта Cursive для всего текста */
     background-image: url('heart.png'); /* Фоновое изображение сердечка */
     background-repeat: repeat; /* Повторение фонового изображения */
     background-size: 60px 60px; /* Размер сердечка */
@@ -29,7 +29,6 @@ body {
     z-index: 1;
     font-size: 16px;
     font-weight: bold; /* Жирный шрифт */
-    font-family: 'Segoe Script', cursive; /* Шрифт для кнопок */
     color: white; /* Цвет текста кнопок */
 }
 
