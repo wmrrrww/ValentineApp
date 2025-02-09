@@ -8,9 +8,6 @@ body {
     position: relative;
     overflow: hidden;
     font-family: cursive; /* Установка шрифта Cursive для всего текста */
-    background-image: url('heart.png'); /* Фоновое изображение сердечка */
-    background-repeat: repeat; /* Повторение фонового изображения */
-    background-size: 60px 60px; /* Размер сердечка */
 }
 
 #question {
@@ -38,19 +35,4 @@ body {
 
 #no {
     background-color: black; /* Черный цвет */
-}
-
-.heart {
-    position: absolute;
-    width: 40px; /* Увеличенный размер сердечка */
-    height: 40px;
-    background-color: rgba(255, 105, 180, 0.5); /* Полупрозрачный розовый цвет */
-    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-    animation: float 3s infinite;
-}
-
-@keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0); }
 }
