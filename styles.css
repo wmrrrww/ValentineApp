@@ -11,13 +11,14 @@ body {
     background-image: url('heart.png'); /* Фоновое изображение сердечка */
     background-repeat: repeat; /* Повторение фонового изображения */
     background-size: 60px 60px; /* Размер сердечка */
-    opacity: 0.5; /* Полупрозрачный фон */
 }
 
 #question {
     font-size: 24px;
     text-align: center;
     z-index: 1;
+    color: black; /* Черный цвет текста */
+    text-shadow: 0 0 5px white; /* Белая обводка текста */
 }
 
 .button {
@@ -29,16 +30,15 @@ body {
     font-size: 16px;
     font-weight: bold; /* Жирный шрифт */
     font-family: 'Segoe Script', cursive; /* Шрифт для кнопок */
+    color: white; /* Цвет текста кнопок */
 }
 
 #yes {
     background-color: #90ee90; /* Нежно-зеленый цвет */
-    color: white;
 }
 
 #no {
     background-color: black; /* Черный цвет */
-    color: white;
 }
 
 .heart {
