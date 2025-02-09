@@ -19,8 +19,8 @@
         }
         .heart {
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 40px; /* Увеличенный размер сердечка */
+            height: 40px;
             background-color: rgba(255, 105, 180, 0.5); /* Полупрозрачный розовый цвет */
             clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
             animation: float 3s infinite;
@@ -42,6 +42,8 @@
             cursor: pointer;
             z-index: 1;
             font-size: 16px;
+            font-weight: bold; /* Жирный шрифт */
+            font-family: 'Segoe Script', cursive; /* Шрифт для кнопок */
         }
         #yes {
             background-color: #90ee90; /* Нежно-зеленый цвет */
@@ -59,8 +61,8 @@
     <button class="button" id="no">Нет</button>
 
     <script>
-        // Генерация сердечек
-        for (let i = 0; i < 20; i++) {
+        // Генерация сердечек на фоне
+        for (let i = 0; i < 100; i++) { // Увеличено количество сердечек
             const heart = document.createElement('div');
             heart.classList.add('heart');
             heart.style.left = Math.random() * 100 + 'vw';
