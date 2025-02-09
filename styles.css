@@ -5,7 +5,8 @@ body {
     justify-content: center;
     align-items: center;
     background-image: url('heart.png'); /* Фон с сердечками */
-    background-size: cover; /* Заполнение фона */
+    background-size: 10%; /* Уменьшение размера фонового изображения */
+    background-repeat: repeat; /* Много изображений по всей странице */
     position: relative;
     overflow: hidden;
     font-family: cursive; /* Установка шрифта Cursive для всего текста */
