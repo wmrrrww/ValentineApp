@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Валентинка</title>
     <link rel="apple-touch-icon" href="icon.png"> <!-- Иконка для главного экрана -->
-    <link rel="stylesheet" href="styles.css"> <!-- Подключение CSS -->
+    <link rel="stylesheet" href="styles.css"> <!-- Подключение CSS файла -->
     <style>
         body {
             font-family: cursive; /* Установка шрифта Cursive для всего текста */
@@ -15,7 +15,8 @@
             justify-content: center;
             align-items: center;
             background-image: url('heart.png'); /* Фон с сердечками */
-            background-size: cover; /* Заполнение фона */
+            background-size: 10%; /* Уменьшение размера фонового изображения */
+            background-repeat: repeat; /* Много изображений по всей странице */
             position: relative;
             overflow: hidden;
         }
@@ -33,36 +34,37 @@
             transition: opacity 0.5s; /* Плавное появление текста */
             word-wrap: break-word; /* Перенос слов */
             max-width: 90%; /* Максимальная ширина текста */
+            line-height: 1.5; /* Высота строки для удобства чтения */
         }
         #text1 {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 10%; /* Положение текста */
+            left: 5%;
         }
         #text2 {
             position: absolute;
-            top: 20px;
+            top: 30%; /* Положение текста */
             left: 50%;
             transform: translateX(-50%);
         }
         #text3 {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 50%; /* Положение текста */
+            right: 5%;
         }
         #text4 {
             position: absolute;
-            bottom: 20px;
-            left: 20px;
+            bottom: 30%; /* Положение текста */
+            left: 5%;
         }
         #text5 {
             position: absolute;
-            bottom: 20px;
-            right: 20px;
+            bottom: 10%; /* Положение текста */
+            right: 5%;
         }
         #text6 {
             position: absolute;
-            top: 50%;
+            top: 70%; /* Положение текста */
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 32px; /* Увеличенный размер текста */
@@ -72,6 +74,10 @@
             display: none; /* Скрыто до появления */
             margin-top: 20px; /* Отступ для изображения */
             width: 100px; /* Ширина изображения */
+            position: absolute;
+            top: 80%; /* Положение изображения */
+            left: 50%;
+            transform: translateX(-50%); /* Центрирование изображения */
         }
     </style>
 </head>
