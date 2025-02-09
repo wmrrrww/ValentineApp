@@ -8,7 +8,7 @@ body {
     position: relative;
     overflow: hidden;
     font-family: 'Segoe Script', cursive; /* Установка шрифта Segoe Script */
-    background-image: url('heart.png'); /* Фоновое изображение сердечка */
+    background-image: url('heart.jpg'); /* Фоновое изображение сердечка */
     background-repeat: repeat; /* Повторение фонового изображения */
     background-size: 60px 60px; /* Размер сердечка */
 }
