@@ -4,7 +4,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0e1ff; /* Светлый фон */
+    background-image: url('heart.png'); /* Фон с сердечками */
+    background-size: cover; /* Заполнение фона */
     position: relative;
     overflow: hidden;
     font-family: cursive; /* Установка шрифта Cursive для всего текста */
