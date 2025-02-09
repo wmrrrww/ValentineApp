@@ -28,6 +28,7 @@
             padding: 20px; /* Отступ между частями */
             box-sizing: border-box;
             text-align: justify; /* Выравнивание текста по ширине */
+            font-size: 24px; /* Размер текста */
         }
         #part6 {
             width: 100%; /* Ширина шестой части */
@@ -42,6 +43,20 @@
         img {
             margin-top: 20px; /* Отступ для изображения */
             width: 100px; /* Ширина изображения */
+        }
+        #extraButton {
+            background-color: #e6e6fa; /* Нежно-фиолетовый цвет */
+            color: black; /* Цвет текста кнопки */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            display: none; /* Скрыто до появления */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Центрирование кнопки */
         }
     </style>
 </head>
@@ -60,6 +75,7 @@
             <img src="ring.png" alt="Кольцо">
         </div>
     </div>
+    <button id="extraButton">И ещё кое-что... Нажимай сюда</button>
 
     <script>
         document.getElementById('yes').onclick = function() {
@@ -69,11 +85,7 @@
             setTimeout(() => {
                 document.getElementById('container').style.opacity = 1; // Показать контейнер
                 document.body.style.backgroundImage = 'none'; // Убрать фон
-                typeText('Я буду верить в то, что это наш не последний раз, когда мы будем отмечать этот праздник. Их будет несчитанное количество', 'part1', 0);
-                typeText('Каждый раз, как я смотрю в твои глаза, я вижу это, ты - всё, что мне нужно', 'part2', 0);
-                typeText('Я нашла тебя, не глядя, и люблю тебя, не пытаясь', 'part3', 0);
-                typeText('Юридически - мы не вместе. Биологически - нас объединяет лишь вид. Но морально и психологически - люблю до безумия', 'part4', 0);
-                typeText('С этой маленькой открыткой я дарю тебе улыбку и немного нежных слов... ну и свою любовь <3', 'part5', 0);
+                typeText('Я буду верить в то, что это наш не последний раз, когда мы будем отмечать этот праздник. Их будет несчитанное количество', 'part1', 0, 0);
             }, 5000); // Ждать 5 секунд
         };
 
@@ -88,15 +100,34 @@
             setTimeout(() => moveButton(button), 1000);
         }
 
-        function typeText(text, partId, index) {
+        function typeText(text, partId, index, partNumber) {
             if (index < text.length) {
                 document.getElementById(partId).innerText += text.charAt(index);
-                setTimeout(() => typeText(text, partId, index + 1), 50); // Печать каждой буквы с задержкой
-            } else if (partId === 'part5') {
-                document.getElementById('part6').style.display = 'flex'; // Показать шестую часть
-                typeText('Я бы сделала целое приложение для тебя, но у меня нет...', 'finalText', 0);
+                setTimeout(() => typeText(text, partId, index + 1, partNumber), 50); // Печать каждой буквы с задержкой
+            } else {
+                if (partNumber < 4) {
+                    setTimeout(() => {
+                        const nextPart = partNumber + 1;
+                        const nextText = [
+                            'Каждый раз, как я смотрю в твои глаза, я вижу это, ты - всё, что мне нужно',
+                            'Я нашла тебя, не глядя, и люблю тебя, не пытаясь',
+                            'Юридически - мы не вместе. Биологически - нас объединяет лишь вид. Но морально и психологически - люблю до безумия',
+                            'С этой маленькой открыткой я дарю тебе улыбку и немного нежных слов... ну и свою любовь <3'
+                        ];
+                        document.getElementById(`part${nextPart}`).style.display = 'flex'; // Показать следующую часть
+                        typeText(nextText[partNumber], `part${nextPart}`, 0, partNumber);
+                    }, 3000); // Ждать 3 секунды перед появлением следующей части
+                } else {
+                    document.getElementById('extraButton').style.display = 'block'; // Показать кнопку
+                }
             }
         }
+
+        document.getElementById('extraButton').onclick = function() {
+            this.style.display = 'none'; // Скрыть кнопку
+            document.getElementById('part6').style.display = 'flex'; // Показать шестую часть
+            typeText('Я бы сделала целое приложение для тебя, но у меня нет...', 'finalText', 0, 5);
+        };
     </script>
 </body>
 </html>
