@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Валентинка</title>
     <link rel="apple-touch-icon" href="icon.png"> <!-- Иконка для главного экрана -->
-    <link rel="stylesheet" href="styles.css"> <!-- Подключение CSS -->
+    <link rel="stylesheet" href="styles.css"> <!-- Подключение CSS файла -->
     <style>
         body {
-            font-family: cursive; /* Установка шрифта Cursive для всего текста */
+            font-family: 'Cursive', cursive; /* Установка шрифта Cursive для всего текста */
             margin: 0;
             height: 100vh;
             display: flex;
@@ -19,6 +19,30 @@
             background-repeat: repeat; /* Много изображений по всей странице */
             position: relative;
             overflow: hidden;
+        }
+        #question {
+            font-size: 24px;
+            text-align: center;
+            z-index: 1;
+            color: black; /* Черный цвет текста */
+            text-shadow: 0 0 5px white; /* Белая обводка текста */
+        }
+        .button {
+            font-family: 'Cursive', cursive; /* Установка шрифта Cursive для кнопок */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1;
+            font-size: 16px;
+            font-weight: bold; /* Жирный шрифт */
+            color: white; /* Цвет текста кнопок */
+        }
+        #yes {
+            background-color: #90ee90; /* Нежно-зеленый цвет */
+        }
+        #no {
+            background-color: black; /* Черный цвет */
         }
         #container {
             display: none; /* Скрыто до появления */
