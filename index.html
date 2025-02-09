@@ -13,14 +13,7 @@
     <button class="button" id="no">Нет</button>
 
     <script>
-        // Генерация сердечек на фоне
-        for (let i = 0; i < 100; i++) { // Увеличено количество сердечек
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.top = Math.random() * 100 + 'vh';
-            document.body.appendChild(heart);
-        }
+        // Удален код генерации сердечек на фоне
 
         document.getElementById('yes').onclick = function() {
             document.getElementById('question').innerText = 'Урааааа, спасибо!';
