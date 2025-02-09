@@ -11,7 +11,7 @@ body {
     background-image: url('heart.png'); /* Фоновое изображение сердечка */
     background-repeat: repeat; /* Повторение фонового изображения */
     background-size: 60px 60px; /* Размер сердечка */
-    filter: brightness(0.8); /* Уменьшение яркости фона */
+    opacity: 0.5; /* Полупрозрачный фон */
 }
 
 #question {
@@ -32,12 +32,12 @@ body {
 }
 
 #yes {
-    background-color: rgba(144, 238, 144, 0.8); /* Полупрозрачный нежно-зеленый цвет */
+    background-color: #90ee90; /* Нежно-зеленый цвет */
     color: white;
 }
 
 #no {
-    background-color: rgba(0, 0, 0, 0.8); /* Полупрозрачный черный цвет */
+    background-color: black; /* Черный цвет */
     color: white;
 }
 
@@ -45,7 +45,7 @@ body {
     position: absolute;
     width: 40px; /* Увеличенный размер сердечка */
     height: 40px;
-    background-color: rgba(255, 105, 180, 0.3); /* Полупрозрачный розовый цвет */
+    background-color: rgba(255, 105, 180, 0.5); /* Полупрозрачный розовый цвет */
     clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
     animation: float 3s infinite;
 }
