@@ -9,7 +9,7 @@ body {
     background-repeat: repeat; /* Много изображений по всей странице */
     position: relative;
     overflow: hidden;
-    font-family: cursive; /* Установка шрифта Cursive для всего текста */
+    font-family: 'Comfortaa', cursive; /* Установка шрифта Comfortaa для всего текста */
 }
 
 #question {
@@ -29,6 +29,7 @@ body {
     font-size: 16px;
     font-weight: bold; /* Жирный шрифт */
     color: white; /* Цвет текста кнопок */
+    font-family: 'Comfortaa', cursive; /* Установка шрифта Comfortaa для кнопок */
 }
 
 #yes {
