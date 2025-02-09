@@ -15,12 +15,13 @@
             background-color: #f0e1ff; /* Светлый фон */
             position: relative;
             overflow: hidden;
+            font-family: 'Segoe Script', cursive; /* Установка шрифта Segoe Script */
         }
         .heart {
             position: absolute;
             width: 20px;
             height: 20px;
-            background-color: purple;
+            background-color: rgba(255, 105, 180, 0.5); /* Полупрозрачный розовый цвет */
             clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
             animation: float 3s infinite;
         }
@@ -35,13 +36,20 @@
             z-index: 1;
         }
         .button {
-            background-color: red;
-            color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             z-index: 1;
+            font-size: 16px;
+        }
+        #yes {
+            background-color: #90ee90; /* Нежно-зеленый цвет */
+            color: white;
+        }
+        #no {
+            background-color: black; /* Черный цвет */
+            color: white;
         }
     </style>
 </head>
