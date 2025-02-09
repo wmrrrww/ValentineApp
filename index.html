@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Валентинка</title>
     <link rel="apple-touch-icon" href="icon.png"> <!-- Иконка для главного экрана -->
-    <link rel="stylesheet" href="styles.css"> <!-- Подключение CSS -->
+    <link rel="stylesheet" href="styles.css"> <!-- Подключение CSS файла -->
     <style>
         body {
             font-family: cursive; /* Установка шрифта Cursive для всего текста */
@@ -14,7 +14,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #f0e1ff; /* Светлый фон */
+            background-image: url('heart.png'); /* Фон с сердечками */
+            background-size: cover; /* Заполнение фона */
             position: relative;
             overflow: hidden;
         }
@@ -30,6 +31,8 @@
             margin: 20px; /* Отступ между текстами */
             opacity: 0; /* Скрыто до появления */
             transition: opacity 0.5s; /* Плавное появление текста */
+            word-wrap: break-word; /* Перенос слов */
+            max-width: 90%; /* Максимальная ширина текста */
         }
         #text1 {
             position: absolute;
@@ -92,10 +95,12 @@
             document.getElementById('yes').style.display = 'none';
             document.getElementById('no').style.display = 'none';
             document.getElementById('container').style.display = 'block'; // Показать контейнер
-            document.body.style.backgroundImage = 'none'; // Убрать фон
 
             // Показать тексты по очереди
-            setTimeout(() => showText('text1'), 0); // Показываем первый текст сразу
+            setTimeout(() => {
+                document.body.style.backgroundImage = 'none'; // Убрать фон
+                showText('text1'); // Показываем первый текст
+            }, 0); // Показываем первый текст сразу
             setTimeout(() => showText('text2'), 3000); // Второй текст через 3 секунды
             setTimeout(() => showText('text3'), 6000); // Третий текст через 6 секунд
             setTimeout(() => showText('text4'), 9000); // Четвертый текст через 9 секунд
