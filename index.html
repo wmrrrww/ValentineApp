@@ -25,6 +25,9 @@
             align-items: center;
             overflow: hidden;
             position: relative;
+            padding: 20px; /* Отступ между частями */
+            box-sizing: border-box;
+            text-align: justify; /* Выравнивание текста по ширине */
         }
         #part6 {
             width: 100%; /* Ширина шестой части */
@@ -34,6 +37,7 @@
             justify-content: center;
             align-items: center;
             font-size: 32px; /* Увеличенный размер текста */
+            text-align: center; /* Центрирование текста */
         }
         img {
             margin-top: 20px; /* Отступ для изображения */
@@ -59,7 +63,7 @@
 
     <script>
         document.getElementById('yes').onclick = function() {
-            document.getElementById('question').innerText = 'Урааааа, спасибо!';
+            document.getElementById('question').style.display = 'none'; // Скрыть вопрос
             document.getElementById('yes').style.display = 'none';
             document.getElementById('no').style.display = 'none';
             setTimeout(() => {
