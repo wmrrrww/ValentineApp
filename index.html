@@ -8,55 +8,67 @@
     <link rel="stylesheet" href="styles.css"> <!-- Подключение CSS файла -->
     <style>
         body {
-            font-family: cursive; /* шрифт Cursive для всего текста */
+            font-family: cursive; /* Установка шрифта Cursive для всего текста */
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0e1ff; /* Светлый фон */
+            position: relative;
+            overflow: hidden;
         }
         #container {
-            display: flex;
-            flex-wrap: wrap;
-            height: 100vh;
-            position: relative;
-            opacity: 0; /* Скрыто до появления */
+            display: none; /* Скрыто до появления */
+            position: absolute;
+            width: 100%;
+            height: 100%;
         }
-        .part {
-            width: 33.33%; /* Ширина каждой части */
-            height: 50%; /* Высота каждой части */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
-            padding: 20px; /* Отступ между частями */
-            box-sizing: border-box;
+        .text {
+            display: none; /* Скрыто до появления */
             text-align: justify; /* Выравнивание текста по ширине */
-            font-size: 24px; /* Размер текста */
+            margin: 20px; /* Отступ между текстами */
+            opacity: 0; /* Скрыто до появления */
+            transition: opacity 0.5s; /* Плавное появление текста */
         }
-        #part6 {
-            width: 100%; /* Ширина шестой части */
-            height: 100%; /* Высота шестой части */
-            display: none; /* Скрыто до заполнения */
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        #text1 {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        #text2 {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #text3 {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        #text4 {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+        #text5 {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+        #text6 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             font-size: 32px; /* Увеличенный размер текста */
             text-align: center; /* Центрирование текста */
         }
         img {
+            display: none; /* Скрыто до появления */
             margin-top: 20px; /* Отступ для изображения */
             width: 100px; /* Ширина изображения */
-        }
-        #extraButton {
-            background-color: #e6e6fa; /* Нежно-фиолетовый цвет */
-            color: black; /* Цвет текста кнопки */
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-size: 18px;
-            cursor: pointer;
-            display: none; /* Скрыто до появления */
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%); /* Центрирование кнопки */
         }
     </style>
 </head>
@@ -65,29 +77,40 @@
     <button class="button" id="yes">Да</button>
     <button class="button" id="no">Нет</button>
     <div id="container">
-        <div class="part" id="part1"></div>
-        <div class="part" id="part2"></div>
-        <div class="part" id="part3"></div>
-        <div class="part" id="part4"></div>
-        <div class="part" id="part5"></div>
-        <div class="part" id="part6">
-            <div id="finalText">Я бы сделала целое приложение для тебя, но у меня нет...</div>
-            <img src="ring.png" alt="Кольцо">
-        </div>
+        <div class="text" id="text1">Я буду верить в то, что это наш не последний раз, когда мы будем отмечать этот праздник. Их будет несчитанное количество</div>
+        <div class="text" id="text2">Каждый раз, как я смотрю в твои глаза, я вижу это, ты - всё, что мне нужно</div>
+        <div class="text" id="text3">Я нашла тебя, не глядя, и люблю тебя, не пытаясь</div>
+        <div class="text" id="text4">Юридически - мы не вместе. Биологически - нас объединяет лишь вид. Но морально и психологически - мы связаны на 104%</div>
+        <div class="text" id="text5">С этой маленькой открыткой я дарю тебе улыбку и немного нежных слов... ну и свою любовь <3</div>
+        <div class="text" id="text6">Я бы сделала целое приложение для тебя, но у меня нет...</div>
+        <img src="ring.png" alt="Кольцо" id="ringImage">
     </div>
-    <button id="extraButton">И ещё кое-что... Нажимай сюда</button>
 
     <script>
         document.getElementById('yes').onclick = function() {
             document.getElementById('question').style.display = 'none'; // Скрыть вопрос
             document.getElementById('yes').style.display = 'none';
             document.getElementById('no').style.display = 'none';
+            document.getElementById('container').style.display = 'block'; // Показать контейнер
+            document.body.style.backgroundImage = 'none'; // Убрать фон
+
+            // Показать тексты по очереди
+            setTimeout(() => showText('text1'), 0); // Показываем первый текст сразу
+            setTimeout(() => showText('text2'), 3000); // Второй текст через 3 секунды
+            setTimeout(() => showText('text3'), 6000); // Третий текст через 6 секунд
+            setTimeout(() => showText('text4'), 9000); // Четвертый текст через 9 секунд
+            setTimeout(() => showText('text5'), 12000); // Пятый текст через 12 секунд
             setTimeout(() => {
-                document.getElementById('container').style.opacity = 1; // Показать контейнер
-                document.body.style.backgroundImage = 'none'; // Убрать фон
-                typeText('Я буду верить в то, что это наш не последний раз, когда мы будем отмечать этот праздник. Их будет несчитанное количество', 'part1', 0, 0);
-            }, 5000); // Ждать 5 секунд
+                showText('text6'); // Шестой текст
+                document.getElementById('ringImage').style.display = 'block'; // Показать изображение
+            }, 15000); // Через 15 секунд
         };
+
+        function showText(textId) {
+            const textElement = document.getElementById(textId);
+            textElement.style.display = 'block'; // Показать текст
+            textElement.style.opacity = 1; // Сделать текст видимым
+        }
 
         document.getElementById('no').onclick = function() {
             this.style.position = 'absolute';
@@ -99,35 +122,6 @@
             button.style.top = Math.random() * (window.innerHeight - 50) + 'px';
             setTimeout(() => moveButton(button), 1000);
         }
-
-        function typeText(text, partId, index, partNumber) {
-            if (index < text.length) {
-                document.getElementById(partId).innerText += text.charAt(index);
-                setTimeout(() => typeText(text, partId, index + 1, partNumber), 50); // Печать каждой буквы с задержкой
-            } else {
-                if (partNumber < 4) {
-                    setTimeout(() => {
-                        const nextPart = partNumber + 1;
-                        const nextText = [
-                            'Каждый раз, как я смотрю в твои глаза, я вижу это, ты - всё, что мне нужно',
-                            'Я нашла тебя, не глядя, и люблю тебя, не пытаясь',
-                            'Юридически - мы не вместе. Биологически - нас объединяет лишь вид. Но морально и психологически - люблю до безумия',
-                            'С этой маленькой открыткой я дарю тебе улыбку и немного нежных слов... ну и свою любовь <3'
-                        ];
-                        document.getElementById(`part${nextPart}`).style.display = 'flex'; // Показать следующую часть
-                        typeText(nextText[partNumber], `part${nextPart}`, 0, partNumber);
-                    }, 3000); // Ждать 3 секунды перед появлением следующей части
-                } else {
-                    document.getElementById('extraButton').style.display = 'block'; // Показать кнопку
-                }
-            }
-        }
-
-        document.getElementById('extraButton').onclick = function() {
-            this.style.display = 'none'; // Скрыть кнопку
-            document.getElementById('part6').style.display = 'flex'; // Показать шестую часть
-            typeText('Я бы сделала целое приложение для тебя, но у меня нет...', 'finalText', 0, 5);
-        };
     </script>
 </body>
 </html>
