@@ -4,9 +4,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('heart.png'); /* Фон с сердечками */
-    background-size: 10%; /* Уменьшение размера фонового изображения */
-    background-repeat: repeat; /* Много изображений по всей странице */
+    background-color: #E6E6FA; /* Нежно-фиолетовый цвет фона */
     position: relative;
     overflow: hidden;
     font-family: 'Comfortaa', cursive; /* Установка шрифта Comfortaa для всего текста */
