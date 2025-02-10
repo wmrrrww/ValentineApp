@@ -112,6 +112,8 @@
     </div>
 
     <script>
+        let currentTextIndex = 0; // Индекс текущего текста
+
         document.getElementById('yes').onclick = function() {
             document.getElementById('gif-container').style.display = 'none'; // Скрыть GIF
             document.getElementById('question').style.display = 'none'; // Скрыть вопрос
@@ -119,29 +121,27 @@
             document.getElementById('no').style.display = 'none';
             document.getElementById('container').style.display = 'flex'; // Показать контейнер
 
-            // Показать тексты по очереди
-            setTimeout(() => showText('text1'), 0); // Показываем первый текст сразу
-            setTimeout(() => showText('text2'), 3000); // Второй текст через 3 секунды
-            setTimeout(() => showText('text3'), 6000); // Третий текст через 6 секунд
-            setTimeout(() => showText('text4'), 9000); // Четвертый текст через 9 секунд
-            setTimeout(() => showText('text5'), 12000); // Пятый текст через 12 секунд
+            showText(currentTextIndex); // Показать первый текст
         };
 
-        function showText(textId) {
-            const textElement = document.getElementById(textId);
-            textElement.style.display = 'block'; // Показать текст
-            textElement.style.opacity = 1; // Сделать текст видимым
+        function showText(index) {
+            const textElement = document.getElementById('text' + (index + 1));
+            if (textElement) {
+                textElement.style.display = 'block'; // Показать текст
+                textElement.style.opacity = 1; // Сделать текст видимым
+            }
         }
 
-        // Обработка двойного нажатия для скрытия текстов и показа шестого текста
-        let clickCount = 0;
+        // Обработка нажатия на экран для показа следующего текста
         document.getElementById('container').addEventListener('click', function() {
-            clickCount++;
-            if (clickCount === 2) {
+            if (currentTextIndex < 5) {
+                currentTextIndex++; // Увеличить индекс
+                showText(currentTextIndex); // Показать следующий текст
+            } else if (currentTextIndex === 5) {
                 hideTexts(); // Скрыть тексты
-                showText('text6'); // Показать шестой текст
+                showText(5); // Показать шестой текст
                 document.getElementById('ringImage').style.display = 'block'; // Показать изображение
-                clickCount = 0; // Сбросить счетчик
+                currentTextIndex++; // Увеличить индекс, чтобы не показывать текст снова
             }
         });
 
