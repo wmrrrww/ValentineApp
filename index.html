@@ -16,7 +16,7 @@
             flex-direction: column; /* Вертикальное выравнивание */
             justify-content: center;
             align-items: center;
-            background-color: #E6E6FA; /* Нежно-фиолетовый цвет */
+            background-color: #BC8F8F; /* Новый цвет фона */
             position: relative;
             overflow: hidden;
         }
@@ -52,7 +52,7 @@
             margin: 5px; /* Отступ между кнопками */
         }
         #yes {
-            background-color: #90ee90; /* Нежно-зеленый цвет */
+            background-color: #B22222; /* Новый цвет кнопки "Да" */
         }
         #no {
             background-color: black; /* Черный цвет */
@@ -113,6 +113,7 @@
 
     <script>
         document.getElementById('yes').onclick = function() {
+            document.getElementById('gif-container').style.display = 'none'; // Скрыть GIF
             document.getElementById('question').style.display = 'none'; // Скрыть вопрос
             document.getElementById('yes').style.display = 'none';
             document.getElementById('no').style.display = 'none';
