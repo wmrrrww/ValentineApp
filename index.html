@@ -13,14 +13,23 @@
             margin: 0;
             height: 100vh;
             display: flex;
+            flex-direction: column; /* Вертикальное выравнивание */
             justify-content: center;
             align-items: center;
-            background-image: url('heart.png'); /* Фон с сердечками */
-            background-size: 10%; /* Уменьшение размера фонового изображения */
-            background-repeat: repeat; /* Много изображений по всей странице */
+            background-color: #E6E6FA; /* Нежно-фиолетовый цвет */
             position: relative;
             overflow: hidden;
-            transition: background-color 0.5s; /* Плавный переход цвета фона */
+        }
+        #gif-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%; /* Высота GIF */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 0; /* Под текстом */
         }
         #question {
             font-size: 24px;
@@ -81,6 +90,12 @@
     </style>
 </head>
 <body>
+    <div id="gif-container">
+        <div class="tenor-gif-embed" data-postid="7840092425616109364" data-share-method="host" data-aspect-ratio="1.1828" data-width="100%">
+            <a href="https://tenor.com/view/us-gif-7840092425616109364">Us GIF</a> from <a href="https://tenor.com/search/us-gifs">Us GIFs</a>
+        </div>
+        <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    </div>
     <div id="question">Ты будешь моей валентинкой?</div>
     <button class="button" id="yes">Да</button>
     <button class="button" id="no">Нет</button>
@@ -100,10 +115,6 @@
             document.getElementById('yes').style.display = 'none';
             document.getElementById('no').style.display = 'none';
             document.getElementById('container').style.display = 'flex'; // Показать контейнер
-
-            // Убрать фон и установить новый цвет
-            document.body.style.backgroundImage = 'none'; // Убрать фон с сердечками
-            document.body.style.backgroundColor = '#E6E6FA'; // Нежно-фиолетовый цвет
 
             // Показать тексты по очереди
             setTimeout(() => showText('text1'), 0); // Показываем первый текст сразу
