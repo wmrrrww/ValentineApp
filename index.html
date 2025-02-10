@@ -113,8 +113,10 @@
 
     <script>
         let currentTextIndex = 0; // Индекс текущего текста
+        let isStarted = false; // Флаг, чтобы отслеживать, начато ли взаимодействие
 
         document.getElementById('yes').onclick = function() {
+            isStarted = true; // Устанавливаем флаг, что взаимодействие началось
             document.getElementById('gif-container').style.display = 'none'; // Скрыть GIF
             document.getElementById('question').style.display = 'none'; // Скрыть вопрос
             document.getElementById('yes').style.display = 'none';
@@ -134,14 +136,19 @@
 
         // Обработка нажатия на экран для показа следующего текста
         document.getElementById('container').addEventListener('click', function() {
-            if (currentTextIndex < 5) {
-                currentTextIndex++; // Увеличить индекс
-                showText(currentTextIndex); // Показать следующий текст
-            } else if (currentTextIndex === 5) {
-                hideTexts(); // Скрыть тексты
-                showText(5); // Показать шестой текст
-                document.getElementById('ringImage').style.display = 'block'; // Показать изображение
-                currentTextIndex++; // Увеличить индекс, чтобы не показывать текст снова
+            if (isStarted) { // Проверяем, было ли нажатие на кнопку "Да"
+                if (currentTextIndex < 5) {
+                    currentTextIndex++; // Увеличить индекс
+                    showText(currentTextIndex); // Показать следующий текст
+                } else if (currentTextIndex === 5) {
+                    // Скрыть тексты 1-5
+                    for (let i = 0; i < 5; i++) {
+                        document.getElementById('text' + (i + 1)).style.display = 'none'; // Скрыть тексты 1-5
+                    }
+                    showText(5); // Показать шестой текст
+                    document.getElementById('ringImage').style.display = 'block'; // Показать изображение
+                    currentTextIndex++; // Увеличить индекс, чтобы не показывать текст снова
+                }
             }
         });
 
