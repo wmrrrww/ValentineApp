@@ -145,16 +145,6 @@
             }
         });
 
-        function hideTexts() {
-            for (let i = 1; i <= 5; i++) {
-                const textElement = document.getElementById('text' + i);
-                textElement.style.opacity = 0; // Сделать текст невидимым
-                setTimeout(() => {
-                    textElement.style.display = 'none'; // Скрыть текст
-                }, 500); // Задержка для плавного исчезновения
-            }
-        }
-
         document.getElementById('no').onclick = function() {
             this.style.position = 'absolute';
             moveButton(this);
